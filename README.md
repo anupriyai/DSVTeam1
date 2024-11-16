@@ -1,6 +1,6 @@
 ### DSV Team 1: LLM Evaluation Platform for Data Science Varsity
 
-This repository provides a platform for evaluating large language models (LLMs) using the `deepeval` library. It's designed to support Data Science Varsity (DSV) team projects.
+This repository provides a platform for evaluating large language models (LLMs) using the `deepeval` library.
 
 **Getting Started**
 
