@@ -81,7 +81,7 @@ print(perspective_score)
 def bias_score(input, weights=[0.5, 0.5]):
     moderation_score = ethics_score(input)
     perspective_score = get_perspective_scores(input, api_key)
-    return weights[0] * moderation_score + weights[1] * perspective_score
+    return  1 - (weights[0] * moderation_score + weights[1] * perspective_score)
 
 score = bias_score(input_text)
 print(score)
