@@ -1,0 +1,4 @@
+*.xml filter=lfs diff=lfs merge=lfs -text
+. filter=lfs diff=lfs merge=lfs -text
+*.xml-p1p41242 filter=lfs diff=lfs merge=lfs -text
+venv/enwiki-20241120-pages-articles-multistream1.xml-p1p41242/enwiki-20241120-pages-articles-multistream1.xml-p1p41242 filter=lfs diff=lfs merge=lfs -text
