@@ -14,11 +14,11 @@ import nltk
 
 # FOR THIS CODE TO WORK UNCOMMENT AND DOWNLOAD WHATS BELOW --------------------------------------------------
 # Download nltk resources, a lot of shit sorry (around 2 gigabytes of shit)
-#nltk.download("popular")
-#nltk.download("stopwords")
-#nltk.download('punkt_tab')
-#nltk.download('wordnet')
-#nltk.download('omw-1.4')
+nltk.download("popular")
+nltk.download("stopwords")
+nltk.download('punkt_tab')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 def accuracymetric(claims = ["The Eiffel Tower is in Berlin."], dump_files = "venv\enwiki-20241120-pages-articles-multistream1.xml-p1p41242\enwiki-20241120-pages-articles-multistream1.xml-p1p41242"):
     # Define corpus and claim
@@ -66,29 +66,23 @@ def accuracymetric(claims = ["The Eiffel Tower is in Berlin."], dump_files = "ve
     # ---- tokenizes all the claims
 
 
-    # ---- Retrieve top evidence from corpus for the claims
-    top_k = 1
+        # Retrieve top evidence from corpus for the claims
     scores = []
     evidence_list = []
 
-    for _ in range(len(tokenized_claims_list)):
-        scores.append(bm25.get_scores(tokenized_claims_list)) # get scores for every tokenized claim
+    for tokenized_claim in tokenized_claims_list:
+        scores.append(bm25.get_scores(tokenized_claim))
 
-        
     for score in scores:
-        top_indices = sorted(range(len(score)), key=lambda i: score[i], reverse=True)[:top_k]
-        evidence_list.append(evidence_corpus[top_indices[0]])
+        max_index = score.index(max(score))
+        evidence_list.append(evidence_corpus[max_index])
 
-    # ---- Retrieve top evidence from corpus for the claims
-
-
-    # ---- Generating probabiilties
-
+    # Generate probabilities and predictions
     result = {}
 
-    for i in range(len(tokenized_claims_list)):
+    for i in range(len(claims)):
         # Tokenize inputs for RoBERTa
-        inputs = tokenizer(f"Claim: {claims[i]} Evidence: {evidence_list[i]}", return_tensors="pt", truncation=True)
+        inputs = tokenizer(f"Claim: {claims[i]} Evidence: {evidence_list[i]}", return_tensors="pt", truncation=True, max_length=512)
 
         # Perform inference
         outputs = model(**inputs)
@@ -96,13 +90,17 @@ def accuracymetric(claims = ["The Eiffel Tower is in Berlin."], dump_files = "ve
         class_idx = torch.argmax(probs).item()
         labels = ["Supported", "Refuted", "Not Enough Info"]
 
-        # Printing results
+        predicted_label = labels[class_idx]
+        predicted_prob = probs[0][class_idx].item()
+
+        # Print results
         print(f"------------------RESULTS------------------")
         print(f"Top Evidence: {evidence_list[i]}")
-        print(f"Prediction: {labels[class_idx]} \n (Probability of Accurate: {probs.tolist()[0][0]})")
+        print(f"Prediction: {predicted_label} \n (Probability of Accurate: {predicted_prob})")
         print(f"------------------RESULTS------------------")
 
-        result[claims[i]] = probs.tolist()[0][0]
+        result[claims[i]] = predicted_prob
+
 
     return pd.Dataframe(result)    
 
