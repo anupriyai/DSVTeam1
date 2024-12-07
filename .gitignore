@@ -36,3 +36,7 @@ out/
 # Python virtual environment
 backend/venv/
 /.venv/
+
+#Deepeval
+.deepeval-cache.json
+.deepeval_telemtry.txt
