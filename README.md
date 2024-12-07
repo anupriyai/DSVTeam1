@@ -1,4 +1,4 @@
-# DSV Team 1: LLM Evaluation Platform for Data Science Varsity
+## DSV Team 1: LLM Evaluation Platform for Data Science Varsity
 
 This repository provides a platform for evaluating large language models (LLMs).
 
