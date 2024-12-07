@@ -1,0 +1,1526 @@
+{
+	"1": {
+		"writing_prompt": "Fairy Tale Retelling: Rewrite the story of Hansel and Gretel from the perspective of the witch...",
+		"seed_modifiers": [
+		  "Avoid using elements of magical realism in the story.",
+		  "The witch sometimes refers to herself in the third person.",
+		  "The witch has poor writing abilities and makes frequent spelling and grammatical errors.",
+		  "Mention a superstition the witch believes in.",
+		  "Include a brief mention of a childhood memory the witch has.",
+		  "Include a description of the witch's unique fashion sense.",
+		  "Mention a peculiar item the witch keeps in her pocket.",
+		  "Set the story in Salem, Massachusetts, in the late 1600s.",
+		  "Use a sarcastic and self-deprecating tone throughout the witch's diary entries.",
+		  "Include frequent references to the witch's love for a specific type of tea."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "GPT-4 evaluation tends to be more lenient on emotional depth, while human evaluators focused more on originality."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The model did a good job of maintaining a consistent voice but could use more emotional depth in the conclusion.",
+		  "human_feedback": "Great characterization of the witch, but the ending could be more impactful."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"2":{
+		"writing_prompt": "Historical Fiction: Write a scene from a story set during the height of the Roman Empire, focusing on a slice of a day in the life of a gladiator. Do not write a combat scene...",
+		"seed_modifiers": [
+		  "Include references to the gladiator's favorite Roman deity or mythological figure.",
+		  "Describe the gladiator's weapon of choice and its significance to them.",
+		  "Mention a superstition or ritual the gladiator performs before each fight.",
+		  "Include a description of a unique scar or tattoo the gladiator has.",
+		  "Include a brief mention of the gladiator's life before becoming a gladiator.",
+		  "Use vivid, sensory language to describe the sights, sounds, and smells of ancient Rome.",
+		  "Include a conversation between the gladiator and a fellow gladiator or a servant.",
+		  "Mention a specific historical event or figure from the time period.",
+		  "Focus on the gladiator's thoughts and emotions during a moment of solitude.",
+		  "Use a mix of short, punchy sentences and longer, more descriptive ones to create a dynamic pace."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "GPT-4 evaluation tends to focus on engagement, while human evaluators focused more on emotional complexity."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "Great use of historical context, but could include more emotional depth in the gladiator's reflection.",
+		  "human_feedback": "The sensory details were vivid, but the emotional arc could be strengthened."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"3": {
+		"writing_prompt": "Writing Prompt: Modern Epistolary Drama: Write a story told entirely through a series of text messages between two estranged siblings. The texts should span the course of several days...",
+		"seed_modifiers": [
+		  "Include a description of a unique object or item mentioned in one of the text messages.",
+		  "Mention a specific location or landmark that holds significance to the family mystery.",
+		  "Use distinct texting styles and habits to differentiate between the two characters.",
+		  "Mention a specific inside joke or shared memory between the siblings.",
+		  "Include a brief flashback or anecdote that sheds light on the family mystery.",
+		  "Describe a particular emoji or text abbreviation that one of the siblings frequently uses.",
+		  "Include a misunderstanding or miscommunication that arises due to the limitations of text-based communication.",
+		  "Focus on the theme of the challenges and complexities of sibling relationships.",
+		  "Use time stamps and message timestamps to create a sense of urgency or anticipation.",
+		  "Include references to the idea of the power of secrets and the consequences of revealing them."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The text exchanges were effective, but could use more depth in character emotions."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The text message format worked well, but the emotional weight of the ending could be stronger.",
+		  "human_feedback": "The characters' voices were distinct, but the mystery could be more developed."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"4": {
+		"writing_prompt": "Writing Prompt: Historical Espionage Thriller: Write a story set during World War II, comprised solely of intercepted coded messages between a spy and their handler...",
+		"seed_modifiers": [
+		  "Include a brief moment of encoded personal sentiment or emotion between the spy and their handler.",
+		  "Focus on the theme of the sacrifices and moral ambiguities of wartime espionage.",
+		  "Mention a specific location or landmark behind enemy lines that the spy must navigate.",
+		  "Mention a specific historical figure or event that is relevant to the spy's mission.",
+		  "Describe a particular challenge or obstacle the spy faces during their mission.",
+		  "Use period-appropriate language and terminology to create a sense of authenticity.",
+		  "Include a coded reference to a real-life spy or espionage operation from World War II.",
+		  "Use short, terse messages to create a sense of tension and secrecy.",
+		  "Include a description of a unique code or cipher used in the messages.",
+		  "Include references to the idea of the psychological toll of living a double life."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The use of coded language was effective, but the tension could be heightened in the final message."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "Great use of historical context and coded messages, but more emotional nuance in the spy's personal conflicts would enhance the story.",
+		  "human_feedback": "The tension in the messages worked well, but the ending left too many questions unanswered."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"5": {
+		"writing_prompt": "Writing Prompt: Love Letters across continents in 1892: Write a story told through a series of brief love letters between two characters set in 1892...",
+		"seed_modifiers": [
+		  "Include a misunderstanding or miscommunication that arises due to the distance between the characters.",
+		  "Mention a specific cultural tradition or custom from one of the characters' homelands.",
+		  "Include a description of a unique gift or token of affection sent along with one of the letters.",
+		  "Include a brief anecdote or story that one character shares to comfort or entertain the other.",
+		  "Describe a particular hardship or challenge that one of the characters is facing in their daily life.",
+		  "Use poetic or romantic language to convey the depth of the characters' feelings for each other.",
+		  "Mention a specific landmark or natural wonder that one character dreams of visiting with the other.",
+		  "Focus on the theme of the enduring power of love to overcome time and distance.",
+		  "Include references to the idea of fate or destiny bringing the characters together.",
+		  "Mention a specific historical event or cultural shift that impacts the characters' lives."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The letters flowed beautifully, but more emotional depth in their final separation would have made the story even more touching."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The letters created a beautiful emotional arc, but the final resolution left the reader wanting more.",
+		  "human_feedback": "Great progression of their relationship, but the emotional climax could have been stronger."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"6": {
+		"writing_prompt": "In the style of Ernest Hemingway: Write a scene in a larger story about a soldier returning home from war. The scene is set in a bar...",
+		"seed_modifiers": [
+		  "Describe a physical detail or mannerism of the soldier that reflects his experiences.",
+		  "Include a conversation with a bartender or fellow patron that reveals the soldier's state of mind.",
+		  "Focus on the soldier's struggle to readjust to civilian life after the war.",
+		  "Include a description of a unique drink the soldier orders at the bar.",
+		  "Mention a specific war or battle the soldier has recently returned from.",
+		  "Include a brief flashback to a poignant moment during the soldier's time at war.",
+		  "Use short, declarative sentences and simple language to create a sense of directness.",
+		  "Mention a specific location or landmark that holds significance for the soldier.",
+		  "Use understated, subtle language to convey the soldier's emotional turmoil.",
+		  "Include references to a Hemingway-esque theme, such as the loss of innocence or the search for meaning."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The soldier's inner turmoil was well-captured, but the emotional resolution could be deeper."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The dialogue felt authentic to Hemingway's style, but the emotional depth could be improved.",
+		  "human_feedback": "The atmosphere was perfect, but I would have liked a bit more reflection on his experiences."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+	  ,
+	"7": {
+		"writing_prompt": "In the style of Jane Austen: Write a scene in a larger story about a young woman navigating the complexities of society and romance...",
+		"seed_modifiers": [
+		  "Describe a particular gesture or facial expression that reveals a character's true feelings.",
+		  "Focus on the protagonist's internal struggle between societal expectations and personal desires.",
+		  "Mention a specific location or landmark that is iconic to the story's setting.",
+		  "Include a description of a unique fashion accessory or piece of clothing worn by the protagonist.",
+		  "Mention a specific social event or gathering that serves as the setting for the scene.",
+		  "Include a brief aside about the protagonist's family background or upbringing.",
+		  "Use witty, clever dialogue to create a sense of intellectual repartee between characters.",
+		  "Include a conversation that subtly hints at the romantic tension between the protagonist and another character.",
+		  "Use elegant, refined language to capture the formality and propriety of the era.",
+		  "Include references to an Austen-esque theme, such as the importance of manners or the power of social perception."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The romantic tension is well executed, but the conclusion could have been more impactful."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The dialogue was sharp and witty, but the romantic resolution felt a little rushed.",
+		  "human_feedback": "The romantic elements were beautifully woven into the narrative, but the character's resolution could be expanded."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"8": {
+		"writing_prompt": "In the style of H.P. Lovecraft: Write a section of a larger story about a researcher uncovering an ancient, cosmic horror...",
+		"seed_modifiers": [
+		  "Include a description of a unique architectural feature or ancient artifact.",
+		  "Include a conversation with a mysterious or enigmatic character who possesses forbidden knowledge.",
+		  "Include a brief flashback to a disturbing dream or vision experienced by the researcher.",
+		  "Mention a specific mythological or occult reference that hints at the cosmic horror.",
+		  "Describe a particular sensory detail that enhances the atmosphere of dread and unease.",
+		  "Use archaic, elaborate language to create a sense of timelessness and otherworldliness.",
+		  "Mention a specific location or landmark that is central to the story's mythos.",
+		  "Focus on the researcher's gradual descent into madness or obsession.",
+		  "Use unsettling, evocative imagery to convey the scale and scope of the cosmic horror.",
+		  "Include references to a Lovecraftian theme, such as the insignificance of humanity or the existence of ancient, malevolent entities."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The atmosphere of dread was well executed, but the final revelation could have had more impact."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The narrative created a great sense of unease, but the ending could be more final and chilling.",
+		  "human_feedback": "The imagery and descent into madness were great, but the ending left too many questions unanswered."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },		
+	"9":{
+		"writing_prompt": "Writing Prompt: In the style of Virginia Woolf: Write a slice of story that takes place over the course of a single day in a character's life...",
+		"seed_modifiers": [
+		  "Include an interaction with a secondary character that highlights the protagonist's emotional state.",
+		  "Mention a specific memory or past event that shapes the character's perception of the present.",
+		  "Include a brief moment of introspection or self-reflection that reveals the character's inner thoughts.",
+		  "Include a description of a unique sensory experience, such as a particular scent or texture.",
+		  "Describe a particular detail or image that serves as a recurring motif throughout the story.",
+		  "Use poetic, lyrical language to capture the character's stream-of-consciousness narration.",
+		  "Mention a specific location or setting that holds personal significance for the character.",
+		  "Focus on the character's psychological and emotional journey throughout the day.",
+		  "Use vivid, impressionistic imagery to convey the character's sensory experiences and perceptions.",
+		  "Include references to a Woolfian theme, such as the fluidity of time or the complexity of human relationships."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The stream-of-consciousness style was well executed, but some parts were a bit unclear."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The flow of thoughts was captured well, but there could be more clarity in certain sections.",
+		  "human_feedback": "The emotional depth was spot on, though the transitions between memories and present thoughts could be smoother."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"10": {
+		"writing_prompt": "Writing Prompt: In the style of George Orwell: Write a story set in a dystopian future society...",
+		"seed_modifiers": [
+		  "Include a conversation with a character who represents the oppressive system or a fellow rebel.",
+		  "Include a description of a unique piece of propaganda or government-issued item.",
+		  "Focus on the protagonist's internal struggle between conformity and individuality.",
+		  "Mention a specific slogan or catchphrase used by the oppressive regime.",
+		  "Include a brief flashback to the protagonist's life before the dystopian society.",
+		  "Describe a particular act of defiance or rebellion committed by the protagonist.",
+		  "Use clear, direct language to create a sense of urgency and stark realism.",
+		  "Mention a specific location or setting that exemplifies the harsh conditions of the dystopian world.",
+		  "Use vivid, concrete details to illustrate the bleak and oppressive nature of the society.",
+		  "Include references to an Orwellian theme, such as the dangers of totalitarianism or the power of language."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The political themes were strong, but the protagonist's emotional journey could be more compelling."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The societal critique was well done, but the personal stakes of the protagonist could be clearer.",
+		  "human_feedback": "The dystopian world felt very real, but the protagonist's resistance needs more emotional depth."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },	  
+	"11": {
+		"writing_prompt": "Writing Prompt: Modern Epistolary Drama: Write a story told entirely through a series of text messages between two estranged siblings...",
+		"seed_modifiers": [
+		  "Include a description of a unique object or item mentioned in one of the text messages.",
+		  "Mention a specific location or landmark that holds significance to the family mystery.",
+		  "Use distinct texting styles and habits to differentiate between the two characters.",
+		  "Mention a specific inside joke or shared memory between the siblings.",
+		  "Include a specific emoji or text abbreviation that one of the siblings frequently uses.",
+		  "Include a misunderstanding or miscommunication that arises due to the limitations of text-based communication.",
+		  "Focus on the theme of the challenges and complexities of sibling relationships.",
+		  "Use time stamps and message timestamps to create a sense of urgency or anticipation.",
+		  "Include references to the idea of the power of secrets and the consequences of revealing them."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The story unfolded well over time, but the emotional climax could have been more impactful."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "Great buildup of tension, but the resolution felt a bit too open-ended for the emotional stakes.",
+		  "human_feedback": "The characters were relatable, but the family mystery was a bit underdeveloped in terms of emotional payoff."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"12": {
+		"writing_prompt": "Writing Prompt: Historical Espionage Thriller: Write a story set during World War II, comprised solely of intercepted coded messages between a spy and their handler...",
+		"seed_modifiers": [
+		  "Include a brief moment of encoded personal sentiment or emotion between the spy and their handler.",
+		  "Focus on the theme of the sacrifices and moral ambiguities of wartime espionage.",
+		  "Mention a specific location or landmark behind enemy lines that the spy must navigate.",
+		  "Mention a specific historical figure or event that is relevant to the spy's mission.",
+		  "Describe a particular challenge or obstacle the spy faces during their mission.",
+		  "Use period-appropriate language and terminology to create a sense of authenticity.",
+		  "Include a coded reference to a real-life spy or espionage operation from World War II.",
+		  "Use short, terse messages to create a sense of tension and secrecy.",
+		  "Include a description of a unique code or cipher used in the messages.",
+		  "Include references to the idea of the psychological toll of living a double life."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The use of coded language was effective, but the emotional depth of the spy's personal conflict could have been stronger."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The espionage details were excellent, but the protagonist's personal journey felt somewhat overshadowed by the mission.",
+		  "human_feedback": "The historical context and espionage elements were well-executed, but the internal conflict of the spy was not fully explored."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"13": {
+		"writing_prompt": "Writing Prompt: Epistolary Neighbors: Write a story told through letters between two neighbors who have never met in person (and will never meet despite being neighbors). Use the epistolary format to explore their developing relationship. The messages should be naturally written, using distinctively voiced characters. The narrative arc should evolve naturally through the letters, and it should be relatable but incorporate a touch of mystery. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Describe a particular quirk or eccentricity of one of the neighbors that endears them to the other.",
+		  "Mention a specific item or gift that one neighbor leaves for the other, sparking a new conversation.",
+		  "Include a brief anecdote or story that one neighbor shares to entertain or inspire the other.",
+		  "Use distinct writing styles and voices to differentiate between the two characters.",
+		  "Include a description of a unique hobby or interest that one of the neighbors reveals in their letters.",
+		  "Mention a specific local event or community issue that the neighbors bond over.",
+		  "Include a misunderstanding or miscommunication that leads to a humorous or heartwarming moment.",
+		  "Focus on the theme of the power of human connection and friendship.",
+		  "Include references to the idea of finding companionship and support in unlikely places."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The use of coded language was effective, but the emotional depth of the characters' evolving relationship could have been stronger."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The neighbor dynamics were well-drawn, but the emotional development could have been more nuanced.",
+		  "human_feedback": "The epistolary format was effective in building the relationship, but there was room for more conflict or tension."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"14": {
+		"writing_prompt": "Writing Prompt: Epistolary Travelogue: Write a story told through postcards documenting a character's solo journey to a foreign country. Use the epistolary format to capture the character's experiences, observations, and personal reflections as they navigate a new culture. Incorporate vivid descriptions of the setting, local customs, and the character's interactions with the people they encounter. There should be a compelling narrative arc. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Describe a particular challenge or misadventure the character faces during their journey.",
+		  "Focus on the theme of the transformative power of travel and new experiences.",
+		  "Mention a specific cultural tradition or custom the character encounters and reflects upon.",
+		  "Include a description of a unique local dish or culinary experience the character has.",
+		  "Include a brief moment of self-discovery or personal growth for the character.",
+		  "Use vivid, sensory language to transport the reader to the character's locations.",
+		  "Include a reference to a real-life travel destination or landmark that inspired the story.",
+		  "Mention a specific item or souvenir the character purchases or receives, and its significance.",
+		  "Use a mix of humor, introspection, and observation to capture the character's voice.",
+		  "Include references to the idea of stepping outside one's comfort zone and embracing the unfamiliar."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides and Interruptive Sentence Structures",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.2,
+		  "human_score": 5.1,
+		  "final_score": 4.65,
+		  "notes": "The travel setting was vividly described, but the character's emotional growth could have been explored more."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The setting and cultural descriptions were rich, but the personal journey lacked depth.",
+		  "human_feedback": "The postcards captured the adventure well, though there could have been more introspection on the impact of the journey."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"15": {
+		"writing_prompt": "In the style of William Faulkner, write an original scene within a larger story that exemplifies his signature literary techniques and themes. Focus on a pivotal moment of conflict or revelation within a Southern Gothic setting. Your scene should include:\n\nAuthentic dialogue.\nA compelling narrative unfolding over the course of the scene.\nPsychological Depth.\nThematic Focus: Explore the inevitable decline of family legacies, the decaying structures and traditions of the Old South, and the burdens of personal and historical guilt.\nSouthern Voice: Include hints of regional dialect, evocative turns of phrase, and a cadence that reflects the storytelling traditions of the South. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Mention a specific item or object that holds a character's secrets.",
+		  "Employ Faulknerian devices like hinting instead of telling, using symbolism.",
+		  "Include a brief monologue or testimony revealing a character's secret.",
+		  "Include a description of a unique sensory detail that recurs throughout the scene.",
+		  "Mention a specific Southern tradition, rite, or folklore the scene alludes to.",
+		  "Describe a setting laden with symbolism.",
+		  "Include a Gothic motif; a decaying mansion, a family curse, a grotesque.",
+		  "Focus on the theme of the decline of the Old South.",
+		  "Use stream of consciousness to delve into a character's psyche.",
+		  "Include Biblical references and allusions."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.8,
+		  "human_score": 5.2,
+		  "final_score": 5.0,
+		  "notes": "The Gothic atmosphere was beautifully captured, though the psychological depth of the characters could have been explored more fully."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The Southern Gothic elements were strong, but the emotional struggles of the characters felt less developed.",
+		  "human_feedback": "The narrative effectively captured the Southern Gothic setting, but the exploration of psychological depth could have been stronger."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"16": {
+		"writing_prompt": "Writing Prompt: In the style of J.D. Salinger: Write an original short story that captures Salinger's iconic conversational, confessional tone and keen observations of human nature. Use distinctive, colloquial dialogue and a candid, introspective narrative voice to create a sense of intimacy and authenticity. Explore themes of innocence, disillusionment, and the challenges of growing up in a complex world. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Use humor and sarcasm to highlight the absurdities and contradictions of adult society.",
+		  "Describe a particular quirk or mannerism of a secondary character that the protagonist finds irritating or endearing.",
+		  "Mention a specific book, movie, or piece of music that resonates with the protagonist.",
+		  "Include a description of a unique accessory or item of clothing that reflects the protagonist's personality.",
+		  "Mention a specific location or landmark in New York City that holds significance for the protagonist.",
+		  "Include a brief moment of introspection or self-reflection that reveals the protagonist's inner thoughts.",
+		  "Use distinctive slang or colloquialisms to capture the protagonist's voice and background.",
+		  "Include a reference to a real-life historical or cultural event that influences the protagonist's worldview.",
+		  "Focus on the theme of the loss of innocence and the challenges of growing up.",
+		  "Include references to the idea of the importance of authenticity and staying true to oneself."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 5,
+		  "final_score": 4.75,
+		  "notes": "The protagonist's voice was authentic and introspective, but the themes of disillusionment could have been explored more deeply."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The character's voice was strong, but the narrative could have explored more nuance in terms of their emotional journey.",
+		  "human_feedback": "The narrative captured the protagonist's inner conflict well, but there was room for further complexity."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"17": {
+		"writing_prompt": "Writing Prompt: In the style of J.K. Rowling: Write an original short story set in a magical, richly detailed world that captures Rowling's imaginative storytelling and engaging prose. Create a relatable, young original protagonist who discovers hidden abilities and embarks on a thrilling adventure. Incorporate elements of friendship, courage, and the power of love to overcome adversity. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Include a reference to a real-life myth or folklore that inspired an element of the magical world.",
+		  "Include a description of a unique magical creature or fantastic beast.",
+		  "Describe a particular magical object or artifact that plays a role in the story.",
+		  "Mention a specific wizarding tradition or custom that the protagonist encounters.",
+		  "Include a brief moment of foreshadowing or a hint at a larger mystery.",
+		  "Use whimsical and imaginative language to create a sense of wonder and enchantment.",
+		  "Mention a specific location or landmark in the magical world that holds significance for the protagonist.",
+		  "Focus on the theme of the power of friendship and the importance of standing up for what's right.",
+		  "Use humor and wordplay to create memorable and distinctive character names and spells.",
+		  "Include references to the idea of the potential for greatness within even the most unlikely of heroes."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides and Interruptive Sentence Structures",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.7,
+		  "human_score": 4.9,
+		  "final_score": 4.8,
+		  "notes": "The magical world and adventure were captivating, but the protagonist's growth could have been deeper."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The magical elements were imaginative and well-integrated, but the protagonist's emotional journey could have been more compelling.",
+		  "human_feedback": "The story effectively captured the adventure and magic, but there was a lack of emotional depth in the protagonist's journey."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"18": {
+		"writing_prompt": "Writing Prompt: In the style of Enid Blyton: Write an original short story that captures Blyton's imaginative, adventure-filled style and wholesome tone. Create a group of curious, resourceful children who stumble upon a mystery or embark on an exciting adventure. Use vivid descriptions and dialogue to bring the characters and setting to life. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Describe a particular natural feature or landmark the characters explore.",
+		  "Include a description of a unique picnic food or treat the characters enjoy.",
+		  "Mention a specific item or object that becomes important to the characters' adventure.",
+		  "Mention a specific outdoor activity or game the characters engage in.",
+		  "Include a brief moment of gentle moral instruction or a life lesson learned.",
+		  "Use wholesome and cheerful language to create a sense of camaraderie and adventure.",
+		  "Include a reference to a real-life bird, plant, or animal species the characters encounter.",
+		  "Focus on the theme of the joys and challenges of childhood and growing up.",
+		  "Use simple, straightforward language and dialogue suitable for young readers.",
+		  "Include references to the idea of the importance of honesty, bravery, and kindness."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.6,
+		  "human_score": 5.0,
+		  "final_score": 4.8,
+		  "notes": "The adventure was engaging and well-paced, but more depth could have been added to the character relationships."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The sense of camaraderie was well captured, but the characters' interactions could have been more layered.",
+		  "human_feedback": "The story was heartwarming and engaging, but the moral elements could have been a little more subtly integrated."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  },
+	"19": {
+		"writing_prompt": "Writing Prompt: In the style of Roald Dahl: Write an original short story that embodies Dahl's darkly humorous, whimsical style. The protagonist should be a human child. Create a protagonist who faces a fantastical challenge or encounters a bizarre situation. Use descriptive language and elements of surprise to engage young readers. The magic of Roald Dahl's narratives combines dark adult themes with a child's perspective. It should establish a grounded and relatable premise. <SEED> 150-250 words.",
+		"seed_modifiers": [
+		  "Mention a specific quirk or exaggerated physical feature of a character.",
+		  "Describe a particular adults' silly / self-important behaviour from a child's perspective.",
+		  "Include a description of a unique and fantastical setting or location.",
+		  "Include a brief moment of unexpected kindness or compassion from an unlikely source.",
+		  "Use playful, inventive language and made-up words to create a sense of whimsy and imagination.",
+		  "Include a reference to a real-life candy or sweet treat that inspires an element of the story.",
+		  "Mention a specific item or object that holds a secret or magical property.",
+		  "Focus on the theme of the power of imagination and the triumph of the underdog.",
+		  "Use humorous and exaggerated similes and metaphors to create vivid and memorable descriptions.",
+		  "Include references to the idea of the importance of embracing one's uniqueness and individuality."
+		],
+		"judging_criteria": [
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria:",
+			"criteria": [
+			  "Overall Impression",
+			  "Overall Reader Engagement",
+			  "Clever / Witty",
+			  "Gripping",
+			  "Effective Use of Tropes",
+			  "Sentences Flow Naturally",
+			  "Well-earned Lightness or Darkness"
+			]
+		  },
+		  {
+			"prefix_text": "Now, rate the supplied model output on the following criteria (lower = better):",
+			"criteria": [
+			  "Repetitive Tit-for-Tat Dialogue",
+			  "Stilted dialogue",
+			  "Clunky Asides and Interruptive Sentence Structures",
+			  "Amateurish Descriptives"
+			]
+		  }
+		],
+		"gpt4_evaluation_criteria": {
+		  "creativity": "How original and unique is the narrative or solution?",
+		  "coherence": "Does the story flow logically and consistently?",
+		  "engagement": "How captivating and interesting is the writing?",
+		  "tone_consistency": "Is the tone maintained consistently?",
+		  "emotion_depth": "How emotionally complex is the narrative?"
+		},
+		"human_evaluation_criteria": [
+		  {
+			"criteria": "Creativity",
+			"description": "How original and imaginative is the model's response?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Coherence",
+			"description": "How logically and naturally does the story unfold?",
+			"scale": "0 to 6"
+		  },
+		  {
+			"criteria": "Emotional Impact",
+			"description": "Does the story evoke a strong emotional response?",
+			"scale": "0 to 6"
+		  }
+		],
+		"combined_evaluation": {
+		  "gpt4_score": 4.5,
+		  "human_score": 4.8,
+		  "final_score": 4.65,
+		  "notes": "The quirky humor and imaginative language were well executed, but the ending could have had more punch."
+		},
+		"rating_weights": {
+		  "gpt4": 0.5,
+		  "human": 0.5
+		},
+		"feedback": {
+		  "gpt4_feedback": "The whimsical elements were strong, but the emotional undertone could have been deeper.",
+		  "human_feedback": "The humor was fantastic, but the protagonist's growth could have been more pronounced."
+		},
+		"evaluation_iterations": {
+		  "gpt4": 1,
+		  "human": 1
+		}
+	  }
+}
