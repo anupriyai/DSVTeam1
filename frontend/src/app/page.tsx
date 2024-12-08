@@ -23,6 +23,7 @@ const Page = () => {
   }); // Custom LLM responses
   const [errors, setErrors] = useState<string[]>([]); // Validation errors
   const [showUserResponses, setShowUserResponses] = useState(false); // Show custom responses after validation
+  const [serverResponse, setServerResponse] = useState<Record<string, Record<string, Number>>>({});
 
   const csvUrl =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTA28iC6m2xcAaGa2RCEIRQs2Oe9hjC738EQQi8rWi7y_iW7mme-HZOQNJIXv_YEQ/pub?output=csv";
@@ -64,6 +65,15 @@ const Page = () => {
       });
   }, []);
 
+  const [message, setMessage] = useState("Loading");
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/score")
+      .then((response) => response.json())
+      .then((data) => {setMessage(data.message);
+      });
+  }, []);
+
   const handleValidation = () => {
     const validationErrors = [];
 
@@ -83,18 +93,47 @@ const Page = () => {
 
     return validationErrors.length === 0; // Return true if no errors
   };
+  
 
   const handleCompare = () => {
     if (handleValidation()) {
+      sendToBackend();
       setShowUserResponses(true);
     } else {
       setShowUserResponses(false);
     }
   };
+  // Send the data to the backend
+  const sendToBackend = async () => {
+    const response = await fetch('http://localhost:8080/api/accuracy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: userPrompt,
+        categories: userCategories,
+        responses: userResponses,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error:', error);
+      return;
+    }
+    // Backend sends back the custom score
+    const result = await response.json();
+    console.log(result);
+    setServerResponse(result.message);
+    setMessage(result.message) // update score to show new score
+  };
+  
 
   return (
     <main className="min-h-screen bg-gray-900 text-white p-6">
       <h1 className="text-2xl font-bold mb-4">LLM Evaluation Platform</h1>
+      <div>{message}</div>
       <p className="mb-4">Choose how you would like to test our prompts:</p>
 
       {/* Tabs */}
