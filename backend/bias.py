@@ -21,7 +21,7 @@ from openai import OpenAI
 import pandas as pd
 import numpy as np
 
-client = OpenAI(api_key=...)
+client = OpenAI(api_key="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")
 #input_text = ["You are completely useless and everyone hates you. Why don’t you just disappear already?"]
 
 # OpenAI Moderation API

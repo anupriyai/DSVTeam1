@@ -97,14 +97,14 @@ const Page = () => {
 
   const handleCompare = () => {
     if (handleValidation()) {
-      sendToBackend();
+      sendCustomToBackend();
       setShowUserResponses(true);
     } else {
       setShowUserResponses(false);
     }
   };
-  // Send the data to the backend
-  const sendToBackend = async () => {
+  // Send the data of personal prompt to the backend
+  const sendCustomToBackend = async () => {
     const response = await fetch('http://localhost:8080/api/accuracy', {
       method: 'POST',
       headers: {
@@ -129,11 +129,36 @@ const Page = () => {
     setMessage(result.message) // update score to show new score
   };
   
+  // Send to backend after generate button clicked
+  const sendPresetToBackend = async () => {
+    setShowResponses(true); 
+    const response = await fetch('http://localhost:8080/api/accuracy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: selectedPrompt,
+        categories: [selectedCategory],
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error:', error);
+      return;
+    }
+    // Backend sends back the custom score
+    const result = await response.json();
+    console.log(result);
+    setServerResponse(result.message);
+    setMessage(result.message) // update score to show new score
+  }
+  
 
   return (
     <main className="min-h-screen bg-gray-900 text-white p-6">
       <h1 className="text-2xl font-bold mb-4">LLM Evaluation Platform</h1>
-      <div>{message}</div>
       <p className="mb-4">Choose how you would like to test our prompts:</p>
 
       {/* Tabs */}
@@ -209,7 +234,7 @@ const Page = () => {
 
           {/* Generate Button */}
           <button
-            onClick={() => setShowResponses(true)}
+            onClick={() => sendPresetToBackend()}
             className="mb-4 bg-blue-600 px-4 py-2 rounded-md"
           >
             Generate
