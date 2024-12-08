@@ -21,6 +21,7 @@ import nltk
 # nltk.download('omw-1.4')
 
 def accuracymetric(claims, dump_files):
+    # claims: list of strings
     def parsetolist(file_name):
         with open(file_name, "r", encoding="utf-8") as file:
             for line in file:

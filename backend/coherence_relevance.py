@@ -12,7 +12,6 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from accuracy import *
-from data import *
 
 def st_semantic_similarity_score(reference_text, output_text):
     # reference_text: list of strings to compare output_text to
@@ -42,7 +41,7 @@ def word_match_rouge(reference_text, output_text):
 # precision: __% of the output matches input/actual
 # recall: __% of the input/actual was found in the output
 
-def relevance_score(similarity_score, rouge_score):
+def total_relevance_score(similarity_score, rouge_score):
     return 0.3 * np.array(rouge_score) + 0.7 * np.array(similarity_score) # care more about meaning than matching    
 
 
@@ -62,8 +61,11 @@ def perplexity_score(text):
 def calculate_consec_similarity(text):
     # text: string
     sentence_transformer = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-    sentences = text.split(".")
+    sentences = [sentence.strip() for sentence in text.split(".") if sentence.strip()]
     scores = []
+
+    if len(sentences) < 2:
+        return 1
     for i in range(len(sentences) - 1):
         curr = sentences[i]
         next = sentences[i + 1]
@@ -74,7 +76,7 @@ def calculate_consec_similarity(text):
     return np.mean(scores)
 
 def total_coherence(consec_similarity, coherence_values):
-    return 0.7 * coherence_values + 0.3 * consec_similarity
+    return 0.7 * np.array(coherence_values) + 0.3 * np.array(consec_similarity)
 
 # TESTING
 # data = {
@@ -86,7 +88,7 @@ def total_coherence(consec_similarity, coherence_values):
 #     'gpt4': [
 #         "No, not all apples are necessarily red. While every apple is a fruit and some fruits are red, this does not imply that all apples must be red. Apples can come in other colors, such as green or yellow.",
 #         "The area of a rectangle is calculated using the formula: Area=Length×Width. Substitute the given values: Area=10meters×4meters=40square meters. Thus, the area of the rectangle is 40 square meters.",
-#         "Sports are awesome! I love playing basketball and soccer. I also enjoy watching football and baseball. Go team!"
+#         "Sports are awesome."
 #     ]
 # }
 
@@ -95,7 +97,7 @@ def total_coherence(consec_similarity, coherence_values):
 
 # similarity_score = st_semantic_similarity_score(copy_data["prompt"].tolist(), copy_data["gpt4"].tolist())
 # rougeScore = word_match_rouge(copy_data["prompt"].tolist(), copy_data["gpt4"].tolist())
-# relevant_score = relevance_score(similarity_score, rougeScore)
+# relevant_score = total_relevance_score(similarity_score, rougeScore)
 # copy_data["relevance"] = relevant_score
 
 # normalized_perplexity = perplexity_score(copy_data["gpt4"].tolist())
@@ -103,6 +105,6 @@ def total_coherence(consec_similarity, coherence_values):
 
 # copy_data["coherence"] = total_coherence(split_gpt4, normalized_perplexity)
 
-# acc = accuracymetric(copy_data["gpt4"].tolist(), "backend/simplewiki-20240720-pages-articles-multistream.xml")
-# copy_data["accuracy"] = acc
+# # acc = accuracymetric(copy_data["gpt4"].tolist(), "backend/simplewiki-20240720-pages-articles-multistream.xml")
+# # copy_data["accuracy"] = acc
 # print(copy_data[['relevance', 'coherence']])
