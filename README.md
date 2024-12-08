@@ -1,6 +1,53 @@
-### DSV Team 1: LLM Evaluation Platform for Data Science Varsity
+## DSV Team 1: LLM Evaluation Platform for Data Science Varsity
 
-This repository provides a platform for evaluating large language models (LLMs) using the `deepeval` library.
+This repository provides a platform for evaluating large language models (LLMs).
+
+**Getting Started**
+
+Follow the steps below to set up and run the frontend application:
+
+---
+
+**1. Navigate to the Frontend Directory**
+
+Open your terminal and navigate to the `frontend` folder within your project. For example:
+
+```bash
+C:\Users\anupr\OneDrive\Desktop\DSV_LLM> cd DSVTeam1
+C:\Users\anupr\OneDrive\Desktop\DSV_LLM\DSVTeam1> cd frontend
+C:\Users\anupr\OneDrive\Desktop\DSV_LLM\DSVTeam1\frontend>
+```
+
+---
+
+**2. Install Dependencies**
+
+### a) Install Node.js (if not already installed)
+Download and install Node.js from the [official Node.js website](https://nodejs.org/en/download/prebuilt-installer).
+
+### b) Install Required Packages
+Once inside the `frontend` folder, run the following command to install the required dependencies:
+
+```bash
+npm install
+```
+
+---
+
+**3. Launch the Development Server**
+
+To start the development server, ensure you are still in the `frontend` folder and run:
+
+```bash
+npm run dev
+```
+
+---
+
+The frontend should now be up and running. You can access it in your browser at the URL provided in the terminal output (typically `http://localhost:3000`).
+
+--- 
+
 
 **Getting Started**
 
