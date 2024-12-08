@@ -51,7 +51,7 @@ def cluster_acc(responses):
     # responses: list of diff llm's responses (strings) 
 
     if all(len(response.split()) == 1 for response in responses):
-        return ["Not Considered"] * 4
+        return [0] * 4
     
     vectorizer = TfidfVectorizer()
     X_tfidf = vectorizer.fit_transform(responses)
