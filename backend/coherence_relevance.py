@@ -15,6 +15,7 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from accuracy import *
 
 # input = ["To find the area A of a rectangle, we use the formula: A = lengthxwidth Given that the length is 10 meters and the width is 4 meters, we can substitute these values into the formula: A = 10m x 4m Now, we perform the multiplication: A = 40 m^2 Thus, the area of the rectangle is 40 m^2"]
 # output = ["The area of a rectangle is calculated using the formula: Area=Length×Width Substitute the given values: Area=10meters×4meters=40square meters Thus, the area of the rectangle is 40 square meters."]
@@ -96,6 +97,9 @@ def calculate_similarity(text):
 split_gpt4 = split_gpt4.apply(calculate_similarity)
 
 copy_data["coherence"] = 0.7 * normalized_coherence + 0.3 * split_gpt4
+
+acc = accuracymetric(copy_data["gpt4"].tolist(), "backend/simplewiki-20240720-pages-articles-multistream.xml")
+copy_data["accuracy"] = acc
 print(copy_data)
 # def custom_score(relevance, coherence, weight_relevance = 0.5, weight_coherence = 0.5):
 #     
