@@ -1,6 +1,5 @@
 import json
 import os
-import openai
 import numpy as np
 from textblob import TextBlob
 from sklearn.ensemble import RandomForestRegressor
@@ -11,11 +10,10 @@ from openai import OpenAI
 
 # Load environment variables from the .env file
 load_dotenv()
-
 # Ensure the API key is set correctly
 api_key = os.getenv("OPENAI_API_KEY")
-print("API Key loaded:", api_key is not None)
-
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is missing in the .env file")
 # Create OpenAI client instance
 client = OpenAI(api_key=api_key)
 
@@ -23,29 +21,25 @@ client = OpenAI(api_key=api_key)
 def analyze_feedback(feedback):
     sentiment_scores = []
     for feedback_text in feedback:
-        # Sentiment analysis using TextBlob
         sentiment = TextBlob(feedback_text).sentiment.polarity
-        # Convert sentiment polarity to a score between 1 and 6
         if sentiment > 0.1:
-            score = 6  # Positive feedback
+            score = 6
         elif sentiment < -0.1:
-            score = 1  # Negative feedback
+            score = 1
         else:
-            score = 3  # Neutral feedback
+            score = 3
         sentiment_scores.append(score)
     return sum(sentiment_scores) / len(sentiment_scores) if sentiment_scores else 0
-
 # Generate GPT-4 Response Based on Writing Prompt
 def generate_gpt4_output(writing_prompt, gpt4_model="gpt-4"):
     try:
-        # Sending the writing prompt to GPT-4
         completion = client.chat.completions.create(
-            model=gpt4_model,  # Specify the GPT-4 model
-            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                      {"role": "user", "content": writing_prompt}  # User's writing prompt
+            model=gpt4_model,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": writing_prompt}
             ]
         )
-        # Correct way to access the response content
         response_text = completion.choices[0].message.content.strip()
         return response_text
     except Exception as e:
@@ -97,24 +91,15 @@ def calculate_weighted_score(gpt4_score, feedback_score):
 def prepare_data(data_file):
     features = []
     labels = []
-    
-    # Open the JSON data file
     with open(data_file, 'r') as f:
         data = json.load(f)
-
     for entry_id, entry in data.items():
-        # Extract the feedback content
         feedback = entry.get('feedback', {})
-
-        # If feedback is missing, skip this entry
         if not feedback:
             print(f"Skipping entry {entry_id} due to missing feedback.")
             continue
-
         gpt4_feedback = feedback.get('gpt4_feedback', '')
         human_feedback = feedback.get('human_feedback', '')
-
-        # Analyze feedback
         feedback_analysis_score = analyze_feedback([gpt4_feedback, human_feedback])
 
         # Get GPT-4 score (use GPT-4 to generate score based on creativity)
@@ -132,57 +117,44 @@ def prepare_data(data_file):
         # Append features and labels
         features.append(feature_vector)
         labels.append(final_score)
-
     return np.array(features), np.array(labels)
-
-# Train the model using Random Forest Regressor
+# Calculate Weighted Score
+def calculate_weighted_score(gpt4_score, feedback_score):
+    weights = {'gpt4': 0.65, 'feedback': 0.35}
+    normalized_gpt4_score = gpt4_score / 6.0
+    normalized_feedback_score = feedback_score / 6.0
+    return (
+        weights['gpt4'] * normalized_gpt4_score +
+        weights['feedback'] * normalized_feedback_score
+    )
+# Train the model
 def train_model(features, labels):
-    # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.2, random_state=42)
-    
-    # Create and train the Random Forest model
     model = RandomForestRegressor(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
-
-    # Evaluate the model
     y_pred = model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
     print(f"Mean Squared Error on Test Set: {mse}")
-
     return model
-
-# Example usage
-data_file_path = 'C:/Users/19254/OneDrive/Desktop/DSV/DSVTeam1/backend/creative_writing_prompts.json'
-
-# Prepare data (features and labels)
-features, labels = prepare_data(data_file_path)
-
-# Train the model
-model = train_model(features, labels)
-
-# List of strings to test the model
-test_strings = [
-    "No, not all apples are necessarily red. While every apple is a fruit and some fruits are red, this does not imply that all apples must be red. Apples can come in other colors, such as green or yellow.",
-    "The area of a rectangle is calculated using the formula: Area=Length×Width. Substitute the given values: Area=10meters×4meters=40square meters. Thus, the area of the rectangle is 40 square meters.",
-    "Sports are awesome."
-]
-
-# Preprocess this new data and feed it to the model like this:
-new_features = []
-for text in test_strings:
-    # Generate GPT-4 output (using the same text as the prompt)
-    gpt4_output = generate_gpt4_output(text)
-
-    # Calculate feedback analysis score (mocking feedback for this example)
-    feedback_analysis_score = analyze_feedback([text, text])  # Example feedback analysis
-
-    # Generate GPT-4 score for creativity
-    gpt4_score = generate_gpt4_score(text)
-
-    # Prepare the feature vector
-    feature_vector = [gpt4_score, feedback_analysis_score]
-    new_features.append(feature_vector)
-
-# Predict the creativity scores for the new responses
-new_predictions = model.predict(np.array(new_features)).tolist()  # Convert to list
-print("Predicted Creativity Scores:", new_predictions)
+# Generate creativity scores for new responses
+def generate_creativity_scores(responses, model):
+    new_features = []
+    for response in responses:
+        gpt4_score = generate_gpt4_score(response)
+        feedback_analysis_score = analyze_feedback([response])
+        feature_vector = [gpt4_score, feedback_analysis_score]
+        new_features.append(feature_vector)
+    predicted_scores = model.predict(np.array(new_features)).tolist()
+    return predicted_scores
+# Example usage with Flask integration
+if __name__ == "__main__":
+    # Training the model using data from JSON
+    data_file_path = 'backend/creative_writing_prompts.json'
+    features, labels = prepare_data(data_file_path)
+    trained_model = train_model(features, labels)
+    # Test responses
+    test_responses = [
+        "The ocean is a vast blue expanse filled with mystery and life.",
+        "A creative idea is one that is novel and inspiring.",
+        "The bird soared high above the clouds, singing joyfully."
+    ]

@@ -20,8 +20,9 @@ import os
 from openai import OpenAI
 import pandas as pd
 import numpy as np
-from api_key import *
 
+load_dotenv()
+api_key_gpt = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key_gpt)
 input_text = ["You are completely useless and everyone hates you. Why don’t you just disappear already?"]
 
@@ -40,8 +41,8 @@ def ethics_score(input_str, weights=[0.6, 0.4]):
 # moderation_score = ethics_score(input_text, [0.6, 0.4])
 # print(moderation_score)
 
-load_dotenv() 
-api_key_perspective = os.getenv(api_key_pers)
+# load_dotenv() 
+# api_key_perspective = os.getenv(api_key_pers)
 
 # Perspective API
 def get_perspective_scores(input_str, api_key, weights=[0.25, 0.25, 0.25, 0.25]):
