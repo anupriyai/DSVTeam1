@@ -36,7 +36,8 @@ def calculate_acc_score(data):
 
 def calculate_creativity_score(data):
     # placeholder
-    return [1] * 4
+    responses = list(data["responses"].values())
+    test_strings = responses
 
 def calculate_bias_score(data):
     # add perspecitive score + calculate total
