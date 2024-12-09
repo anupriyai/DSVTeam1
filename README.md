@@ -63,7 +63,11 @@ The Next.js frontend is located in the `frontend` folder.
 3. Run the backend (`server.py`) once to ensure the model downloads successfully.
 4. After the model is downloaded, **comment the line back** to avoid downloading it repeatedly:
    ```python
-   # nltk.download('punkt')
+   # nltk.download("popular")
+   # nltk.download("stopwords")
+   # nltk.download('punkt_tab')
+   # nltk.download('wordnet')
+   # nltk.download('omw-1.4')
    ```
 
 ---
