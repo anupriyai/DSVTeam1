@@ -24,6 +24,7 @@ const Page = () => {
   const [errors, setErrors] = useState<string[]>([]); // Validation errors
   const [showUserResponses, setShowUserResponses] = useState(false); // Show custom responses after validation
   const [serverResponse, setServerResponse] = useState<Record<string, Record<string, Number>>>({});
+  const [loading, setLoading] = useState(false);
 
   const csvUrl =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTA28iC6m2xcAaGa2RCEIRQs2Oe9hjC738EQQi8rWi7y_iW7mme-HZOQNJIXv_YEQ/pub?output=csv";
@@ -120,18 +121,19 @@ const Page = () => {
     if (!response.ok) {
       const error = await response.json();
       console.error('Error:', error);
+      setLoading(false);
       return;
     }
     // Backend sends back the custom score
     const result = await response.json();
     console.log(result);
     setServerResponse(result.message);
-    setMessage(result.message) // update score to show new score
+    // setMessage(result.message) // update score to show new score
+    setLoading(false);
   };
-  
+
   // Send to backend after generate button clicked
   const sendPresetToBackend = async () => {
-    setShowResponses(true); 
     const response = await fetch('http://localhost:8080/api/accuracy', {
       method: 'POST',
       headers: {
@@ -152,7 +154,9 @@ const Page = () => {
     const result = await response.json();
     console.log(result);
     setServerResponse(result.message);
-    setMessage(result.message) // update score to show new score
+    // setMessage(result.message) // update score to show new score
+    setLoading(false);
+    setShowResponses(true);
   }
   
 
@@ -250,8 +254,25 @@ const Page = () => {
                 >
                   <h2 className="text-lg font-semibold mb-2">{model}</h2>
                   <p className="text-sm">
-                    {responses[selectedCategory]?.[selectedPrompt]?.[model] ||
-                      "No data available"}
+                    Cluster Accuracy: {serverResponse[model]?.cluster_acc.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Accuracy: {serverResponse[model]?.accuracy.toString()  || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Coherence: {serverResponse[model]?.coherence.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Relevance: {serverResponse[model]?.relevance.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Creativity: {serverResponse[model]?.creativity.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Bias: {serverResponse[model]?.bias.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Custom: {serverResponse[model]?.custom.toString() || "No data available"}
                   </p>
                 </div>
               ))}
@@ -347,7 +368,28 @@ const Page = () => {
                   className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow-md"
                 >
                   <h2 className="text-lg font-semibold mb-2">{model}</h2>
-                  <p className="text-sm">{userResponses[model]}</p>
+                  <p className="text-sm">
+                    Cluster Accuracy: {serverResponse[model]?.cluster_acc.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Accuracy: {serverResponse[model]?.accuracy.toString()  || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Coherence: {serverResponse[model]?.coherence.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Relevance: {serverResponse[model]?.relevance.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Creativity: {serverResponse[model]?.creativity.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Bias: {serverResponse[model]?.bias.toString() || "No data available"}
+                  </p>
+                  <p className="text-sm">
+                    Custom: {serverResponse[model]?.custom.toString() || "No data available"}
+                  </p>
+
                 </div>
               ))}
             </div>
