@@ -8,8 +8,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from dotenv import load_dotenv
 from openai import OpenAI
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -20,9 +18,6 @@ print("API Key loaded:", api_key is not None)
 
 # Create OpenAI client instance
 client = OpenAI(api_key=api_key)
-
-# Initialize sentence transformer model for semantic similarity calculation
-similarity_model = SentenceTransformer('all-MiniLM-L6-v2')  # A pre-trained model for text similarity
 
 # Analyze feedback and assign a score based on sentiment polarity
 def analyze_feedback(feedback):
@@ -57,33 +52,42 @@ def generate_gpt4_output(writing_prompt, gpt4_model="gpt-4"):
         print(f"Error generating output with GPT-4: {e}")
         return ""
 
-# Calculate Semantic Similarity Between Two Texts
-def calculate_semantic_similarity(text1, text2):
-    # Encode the texts into embeddings
-    embeddings = similarity_model.encode([text1, text2])
-    # Compute cosine similarity between the embeddings
-    return cosine_similarity([embeddings[0]], [embeddings[1]])[0][0]
+def generate_gpt4_score(text, score_criteria="creativity"):
+    # Modify the prompt to ensure GPT-4 outputs a numerical score
+    prompt = f"Rate the following text on a scale of 1 to 6 for {score_criteria} (Please provide only a number between 1 and 6):\n\n{text}"
+    
+    # Get the GPT-4 output
+    response = generate_gpt4_output(prompt)
+    
+    try:
+        # Extract the numeric value from the response
+        score = float(response.strip())
+        
+        # Check if the score is in the expected range (1 to 6)
+        if score < 1 or score > 6:
+            print(f"Score out of range: {score}")
+            return 0  # Default to 0 if the score is out of range
+        
+        return score
+    
+    except ValueError:
+        # print(f"Invalid response: {response}")
+        return 0  # Default to 0 if the response is not a valid number
 
 # Calculate Weighted Score with Normalization
-def calculate_weighted_score(human_score, gpt4_score, semantic_similarity, feedback_score):
+def calculate_weighted_score(gpt4_score, feedback_score):
     weights = {
-        'human': 0.4,
-        'gpt4': 0.25,
-        'semantic_similarity': 0.10,
-        'feedback': 0.10
+        'gpt4': 0.65,
+        'feedback': 0.35
     }
 
     # Normalize the scores to be between 0 and 1
-    normalized_human_score = human_score / 6.0 
-    normalized_gpt4_score = gpt4_score / 6.0
-    normalized_semantic_similarity = max(0, min(1, float(semantic_similarity)))
-    normalized_feedback_score = feedback_score / 6.0 
+    normalized_gpt4_score = gpt4_score / 6.0 
+    normalized_feedback_score = feedback_score / 6.0
 
     # Calculate the final weighted score
     weighted_score = (
-        weights['human'] * normalized_human_score +
         weights['gpt4'] * normalized_gpt4_score +
-        weights['semantic_similarity'] * normalized_semantic_similarity +
         weights['feedback'] * normalized_feedback_score
     )
 
@@ -113,30 +117,17 @@ def prepare_data(data_file):
         # Analyze feedback
         feedback_analysis_score = analyze_feedback([gpt4_feedback, human_feedback])
 
-        # Get human score (assuming it's part of the entry)
-        human_score = entry.get("combined_evaluation", {}).get("human_score", 0)
+        # Get GPT-4 score (use GPT-4 to generate score based on creativity)
+        gpt4_score = generate_gpt4_score(entry.get("writing_prompt", ""), score_criteria="creativity")
 
-        # Get GPT-4 score (assuming it's part of the entry)
-        gpt4_score = entry.get("combined_evaluation", {}).get("gpt4_score", 0)
-
-        # Use the writing prompt to generate GPT-4 output
-        writing_prompt = entry.get("writing_prompt", "")
-        gpt4_output = generate_gpt4_output(writing_prompt)
-
-        # Calculate semantic similarity between generated response and another model's response or ideal output
-        reference_output = "The expected or ideal response that you'd compare with."
-        semantic_similarity = calculate_semantic_similarity(gpt4_output, reference_output)
-
-        # Prepare the feature vector (writing prompt, human score, gpt4 score, etc.)
+        # Prepare the feature vector (gpt4 score, feedback score, etc.)
         feature_vector = [
-            human_score,
             gpt4_score,
-            semantic_similarity,
             feedback_analysis_score
         ]
 
         # Calculate the final score using the weighted calculation (this is your label)
-        final_score = calculate_weighted_score(human_score, gpt4_score, semantic_similarity, feedback_analysis_score)
+        final_score = calculate_weighted_score(gpt4_score, feedback_analysis_score)
 
         # Append features and labels
         features.append(feature_vector)
@@ -161,7 +152,7 @@ def train_model(features, labels):
     return model
 
 # Example usage
-data_file_path = 'C:/Users/19254/OneDrive/Desktop/DSV/DSVTeam1/backend/creative_writing_prompts.json'
+data_file_path = 'backend/creative_writing_prompts.json'
 
 # Prepare data (features and labels)
 features, labels = prepare_data(data_file_path)
@@ -169,38 +160,32 @@ features, labels = prepare_data(data_file_path)
 # Train the model
 model = train_model(features, labels)
 
-# Use the trained model to make predictions on new LLM responses (input list is from here!)
-new_llm_responses = [
-    {
-        'writing_prompt': "Write a poem about the beauty of nature.",
-        'feedback': {'gpt4_feedback': "It's a lovely and evocative poem.", 'human_feedback': "Beautiful and soothing imagery."},
-        'human_score': 5,
-        'gpt4_score': 4.5
-    }
+# List of strings to test the model
+test_strings = [
+    "No, not all apples are necessarily red. While every apple is a fruit and some fruits are red, this does not imply that all apples must be red. Apples can come in other colors, such as green or yellow.",
+    "The area of a rectangle is calculated using the formula: Area=Length×Width. Substitute the given values: Area=10meters×4meters=40square meters. Thus, the area of the rectangle is 40 square meters.",
+    "Sports are awesome."
 ]
 
 # Preprocess this new data and feed it to the model like this:
 new_features = []
-for response in new_llm_responses:
-    writing_prompt = response['writing_prompt']
-    gpt4_output = generate_gpt4_output(writing_prompt)
+for text in test_strings:
+    # Generate GPT-4 output (using the same text as the prompt)
+    gpt4_output = generate_gpt4_output(text)
 
-    # Calculate feedback analysis score
-    feedback_analysis_score = analyze_feedback([response['feedback']['gpt4_feedback'], response['feedback']['human_feedback']])
+    # Calculate feedback analysis score (mocking feedback for this example)
+    feedback_analysis_score = analyze_feedback([text, text])  # Example feedback analysis
 
-    # Calculate semantic similarity (optional, depending on your use case)
-    reference_output = "The expected or ideal response that you'd compare with."  # You can adjust as needed
-    semantic_similarity = calculate_semantic_similarity(gpt4_output, reference_output)
+    # Generate GPT-4 score for creativity
+    gpt4_score = generate_gpt4_score(text)
 
     # Prepare the feature vector
-    feature_vector = [
-        response['human_score'],
-        response['gpt4_score'],
-        semantic_similarity,
-        feedback_analysis_score
-    ]
+    feature_vector = [gpt4_score, feedback_analysis_score]
     new_features.append(feature_vector)
 
 # Predict the creativity scores for the new responses
-new_predictions = model.predict(np.array(new_features))
-print("Predicted Creativity Scores:", new_predictions)
+# new_predictions = model.predict(np.array(new_features)).tolist()  # Convert to list
+# print("Predicted Creativity Scores:", new_predictions)
+
+
+

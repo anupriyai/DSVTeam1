@@ -305,12 +305,9 @@ const Page = () => {
                   <input
                     type="radio"
                     value={category}
-                    onChange={(e) => {
-                      const newCategories = e.target.checked
-                        ? [...userCategories, category]
-                        : userCategories.filter((cat) => cat !== category);
-                      setUserCategories(newCategories);
-                    }}
+                    name="category"  // Same name ensures only one can be selected
+                    onChange={(e) => setUserCategories([e.target.value])}  // Set only the selected category
+                    checked={userCategories.includes(category)}  // Check if the category is selected
                     className="mr-2"
                   />
                   <label>{category}</label>
