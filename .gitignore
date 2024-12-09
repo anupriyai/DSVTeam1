@@ -46,9 +46,6 @@ out/
 backend/venv/
 /.venv/
 
-<<<<<<< HEAD
-=======
 #Deepeval
 .deepeval-cache.json
 .deepeval_telemtry.txt
->>>>>>> 316d1f41aede1c894df40452b7706478733653c8
