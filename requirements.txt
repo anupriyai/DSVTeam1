@@ -1,7 +1,0 @@
-deepeval
-numpy==1.26.0
-openai
-torch
-rouge_score
-transformers
-scikit-learn

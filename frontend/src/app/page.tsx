@@ -303,7 +303,7 @@ const Page = () => {
               {categories.map((category) => (
                 <div key={category} className="flex items-center">
                   <input
-                    type="checkbox"
+                    type="radio"
                     value={category}
                     onChange={(e) => {
                       const newCategories = e.target.checked
