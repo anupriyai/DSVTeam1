@@ -20,9 +20,10 @@ import os
 from openai import OpenAI
 import pandas as pd
 import numpy as np
+from api_key import *
 
-client = OpenAI(api_key="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")
-#input_text = ["You are completely useless and everyone hates you. Why don’t you just disappear already?"]
+client = OpenAI(api_key=api_key_gpt)
+input_text = ["You are completely useless and everyone hates you. Why don’t you just disappear already?"]
 
 # OpenAI Moderation API
 def ethics_score(input_str, weights=[0.6, 0.4]):
@@ -40,7 +41,7 @@ def ethics_score(input_str, weights=[0.6, 0.4]):
 # print(moderation_score)
 
 load_dotenv() 
-api_key = os.getenv("AIzaSyC6VsSEt3Tz7SgeN4HYBhhBkrvCzIlcauQ")
+api_key_perspective = os.getenv(api_key_pers)
 
 # Perspective API
 def get_perspective_scores(input_str, api_key, weights=[0.25, 0.25, 0.25, 0.25]):
@@ -75,7 +76,7 @@ def get_perspective_scores(input_str, api_key, weights=[0.25, 0.25, 0.25, 0.25])
     return 1 - (weights[0] * toxicity + weights[1] * severe_toxicity + weights[2] * profanity + weights[3] * threat)
 
 
-# perspective_score = get_perspective_scores(input_text, api_key, [0.25, 0.25, 0.25, 0.25])
+# perspective_score = get_perspective_scores(input_text, api_key_perspective, [0.25, 0.25, 0.25, 0.25])
 # print(perspective_score)
 
 # def bias_score(input, weights=[0.5, 0.5]):
