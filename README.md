@@ -1,148 +1,114 @@
-## DSV Team 1: LLM Evaluation Platform for Data Science Varsity
+# **DSVTeam1: LLM Evaluation Platform**
 
-This repository provides a platform for evaluating large language models (LLMs).
-
-**Getting Started**
-
-Follow the steps below to set up and run the frontend application:
+This project is designed to evaluate LLM outputs across various categories using a Flask backend and a Next.js frontend.
 
 ---
 
-**1. Navigate to the Frontend Directory**
+## **Steps to Run the Project**
 
-Open your terminal and navigate to the `frontend` folder within your project. For example:
+### **1. Running the Flask Backend**
+The Flask backend is located in the `backend` folder and runs via `server.py`.
 
-```bash
-C:\Users\anupr\OneDrive\Desktop\DSV_LLM> cd DSVTeam1
-C:\Users\anupr\OneDrive\Desktop\DSV_LLM\DSVTeam1> cd frontend
-C:\Users\anupr\OneDrive\Desktop\DSV_LLM\DSVTeam1\frontend>
-```
-
----
-
-**2. Install Dependencies**
-
-### a) Install Node.js (if not already installed)
-Download and install Node.js from the [official Node.js website](https://nodejs.org/en/download/prebuilt-installer).
-
-### b) Install Required Packages
-Once inside the `frontend` folder, run the following command to install the required dependencies:
-
-```bash
-npm install
-```
-
----
-
-**3. Launch the Development Server**
-
-To start the development server, ensure you are still in the `frontend` folder and run:
-
-```bash
-npm run dev
-```
+#### Steps:
+1. Navigate to the `backend` folder:
+   ```bash
+   cd backend
+   ```
+2. Install the required Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the Flask server:
+   ```bash
+   python server.py
+   ```
+4. The backend should now be running on:
+   ```
+   http://127.0.0.1:8080
+   ```
 
 ---
 
-The frontend should now be up and running. You can access it in your browser at the URL provided in the terminal output (typically `http://localhost:3000`).
+### **2. Running the Next.js Frontend**
+The Next.js frontend is located in the `frontend` folder.
 
---- 
+#### Steps:
+1. Navigate to the `frontend` folder:
+   ```bash
+   cd frontend
+   ```
+2. Install the required Node.js dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. The frontend should now be running on:
+   ```
+   http://localhost:3000
+   ```
 
+---
 
-**Getting Started**
+## **Additional Steps**
 
-1.  **Clone the Repository:**
+### **3. First-Time Setup for `accuracy.py`**
+1. Open the `accuracy.py` file in the `backend` folder.
+2. Uncomment the `nltk.download()` line to download the tokenizer model:
+   ```python
+   nltk.download('punkt')  # Example line
+   ```
+3. Run the backend (`server.py`) once to ensure the model downloads successfully.
+4. After the model is downloaded, **comment the line back** to avoid downloading it repeatedly:
+   ```python
+   # nltk.download('punkt')
+   ```
 
-      - Open a terminal (e.g., VS Code terminal).
+---
 
-      - Clone the repository using Git:
+### **4. Download Wikipedia Dump for Accuracy Metric**
+1. Download the Wikipedia dump files in XML format from [https://dumps.wikimedia.org/](https://dumps.wikimedia.org/).
+2. Save the dump file in your local machine and note its path.
+3. Open `accuracy.py` in the `backend` folder.
+4. Update the function in `accuracy.py` to reference the path of your XML dump file:
+   ```python
+   dump_path = "/path/to/your/wikipedia_dump.xml"
+   ```
+5. Save the file and restart the Flask backend.
 
-        ```bash
-        git clone https://github.com/anupriyai/DSVTeam1.git
-        ```
+---
 
-2.  **Stay Updated:**
+## **How the Model Works**
 
-      - To avoid merge conflicts, keep your local copy up-to-date before making changes:
+### **Technologies Used**
+- **Programming Languages & Libraries:** Python, TypeScript, NLTK, Torch, SKLearn, TextBlob, OpenAI Moderation API, and Sentence Transformers.
+- **Models & Frameworks:** BM25, RoBERTa Large Model, KMeans Clustering, Random Forest, Perplexity Scoring, and Cosine Similarity.
+- **Datasets:** Wikipedia dump files for the accuracy metric.
 
-        ```bash
-        git pull origin main
-        ```
+---
 
-3.  **Create Your Branch:**
+### **Metric Descriptions**
 
-      - Create a personal branch to isolate your work and keep the `main` branch clean:
+1. **Accuracy Metric**  
+   The accuracy metric uses Wikipedia dump files to determine the correctness of responses. BM25 and a lightweight BERT model identify the closest matches between evidence and the user’s claim, providing a confidence score for correctness.
 
-        ```bash
-        git branch <your_name>  # Replace `<your_name>` with your actual name
-        git checkout <your_name>
-        ```
+2. **Clustering Accuracy**  
+   KMeans clustering is applied to group different LLM responses and detect outliers. Responses that don’t relate well to others are marked as outliers, indicating poor alignment with the group.
 
-4.  **Setup:**
+3. **Coherence**  
+   KMeans clustering is also used for coherence by grouping responses and identifying unrelated ones. Any response isolated from others is flagged as incoherent.
 
-      - **Create a virtual environment:**
+4. **Bias Metric**  
+   The OpenAI Moderation API evaluates responses for bias, harmful content, or sensitive language. This ensures that the generated text is ethically appropriate.
 
-          - This helps manage project dependencies and avoids conflicts with your system's Python environment.
+5. **Creativity Metric**  
+   The creativity metric leverages GPT-4 for scoring writing prompts, TextBlob for feedback sentiment analysis, and a Random Forest model to predict creativity scores dynamically by combining these features.
 
-            ```bash
-            python3 -m venv venv  # Create a virtual environment named `venv`
-            ```
+---
 
-          - Activate the virtual environment:
-
-            ```bash
-            source venv/bin/activate  # Linux/macOS
-            .\venv\Scripts\activate  # Windows
-            ```
-
-      - **Install dependencies:**
-
-        ```bash
-        pip install -r requirements.txt
-        ```
-
-      - **Create a `.env` file:**
-
-          - This file securely stores the OpenAI API key.
-
-          - Create a file named `.env` in the project's root directory with the following line (replace `<YOUR_OPENAI_KEY>` with the one I provided):
-
-            ```
-            OPENAI_API_KEY=<YOUR_OPENAI_KEY>
-            ```
-
-
-5.  **Run the Tests:**
-
-      - **Before committing changes:**
-
-          - Run the tests to ensure your modifications don't break existing functionality:
-
-            ```bash
-            deepeval test run test_example.py
-            ```
-
-              - This command executes the `test_example.py` script, which demonstrates basic `deepeval` usage.
-              - Review the output to verify successful test execution.
-
-      - **After making changes:**
-
-          - After implementing your changes, follow the Git workflow to commit and push your code:
-
-            1.  Add modified files:
-
-                ```bash
-                git add <filename.py>  # Replace `<filename.py>` with the actual file
-                ```
-
-            2.  Commit your changes with a descriptive message:
-
-                ```bash
-                git commit -m "Describe your changes here"
-                ```
-
-            3.  Push your branch to GitHub:
-
-                ```bash
-                git push origin <your_name>  # Replace `<your_name>` with your branch name
-                ```
+### **Testing the Application**
+1. Access the frontend at `http://localhost:3000`.
+2. Use the interface to input prompts and compare model outputs.
+3. Ensure the backend is running to handle requests.
