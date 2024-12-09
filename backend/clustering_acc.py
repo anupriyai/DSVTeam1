@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Using SentenceTransformer & tfidf to turn text into vectors
+# Using tfidf to turn text into vectors
 # pip install sentence-transformers 
 def cluster_acc_df(df, index):
     corpus = [df["GPT4"].iloc[index], df["Gemini"].iloc[index], df["Claude3.5"].iloc[index], df["Llama"].iloc[0]] 
@@ -54,11 +54,12 @@ def cluster_acc(responses):
         return [0] * 4
     
     vectorizer = TfidfVectorizer()
-    X_tfidf = vectorizer.fit_transform(responses)
+    X_tfidf = vectorizer.fit_transform(responses).toarray()
+    normalized_X_tfidf = X_tfidf / np.linalg.norm(X_tfidf, axis=1, keepdims=True)
 
     # KMeans clustering for tfidf vectors
     tfidf = KMeans(n_clusters = 2, random_state = 42)
-    tfidf.fit(X_tfidf)
+    tfidf.fit(normalized_X_tfidf)
     labels_tfidf = tfidf.labels_
     #print(labels_tfidf)
     

@@ -3,22 +3,24 @@ from flask_cors import CORS
 from coherence_relevance import *
 from clustering_acc import *
 from accuracy import *
-from creativity_metric import *
+from creativity_metric import prepare_data, train_model, generate_creativity_scores
 from bias import *
 from data import *
-
+import numpy as np
 app = Flask(__name__)
 CORS(app)
+# Train the creativity model at startup
+DATA_FILE_PATH = 'backend/creative_writing_prompts.json'
+features, labels = prepare_data(DATA_FILE_PATH)
+creativity_model = train_model(features, labels)
 
-relevance_score = 0
-
+# Functions for calculating scores
 def calculate_relevance_score(data):
     prompt = [data["prompt"]] * 4
     responses = list(data["responses"].values())
     ss_score = st_semantic_similarity_score(prompt, responses)
     rouge_score = word_match_rouge(prompt, responses)
     return total_relevance_score(ss_score, rouge_score).tolist()
-    # print("RELEVANCE SCORE", relevance_score)
 
 def calculate_coherence_score(data):
     responses = list(data["responses"].values())
@@ -35,36 +37,37 @@ def calculate_acc_score(data):
     return accuracymetric(responses, "backend/simplewiki-20240720-pages-articles-multistream.xml")
 
 def calculate_creativity_score(data):
-    # placeholder
     responses = list(data["responses"].values())
-    test_strings = responses
+    # Use the trained creativity model
+    return generate_creativity_scores(responses, creativity_model)
 
 def calculate_bias_score(data):
-    # add perspecitive score + calculate total
     responses = list(data["responses"].values())
     ethics = [ethics_score(i) for i in responses]
     return ethics
 
 def custom_score(cluster, acc, coher, rele, creat, bias, weight):
-    return np.array(cluster).astype(float) * weight[0] + np.array(acc).astype(float) * weight[1] + np.array(coher).astype(float) * weight[2] + np.array(rele).astype(float) * weight[3] + np.array(creat).astype(float) * weight[4] + np.array(bias).astype(float) * weight[5]
-
+    return (
+        np.array(cluster).astype(float) * weight[0] +
+        np.array(acc).astype(float) * weight[1] +
+        np.array(coher).astype(float) * weight[2] +
+        np.array(rele).astype(float) * weight[3] +
+        np.array(creat).astype(float) * weight[4] +
+        np.array(bias).astype(float) * weight[5]
+    )
 def calculate_all_scores(data):
     cluster_acc_scores = calculate_cluster_acc_score(data)
     acc_scores = calculate_acc_score(data)
     coherence_scores = calculate_coherence_score(data)
     relevance_scores = calculate_relevance_score(data)
     creativity_scores = calculate_creativity_score(data)
-    bias_scores =  calculate_bias_score(data)
-
+    bias_scores = calculate_bias_score(data)
     my_dict = {}
     models = ["GPT-4o", "Gemini", "Claude 3.5 Sonnet", "Llama"]
-    # need to change when changed to select only 1 category
     category = data["categories"][0]
-
     if category == "Factual Knowledge":
         weight = [0.2, 0.5, 0, 0.3, 0, 0]
         custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
-
         for i, model in enumerate(models):
             my_dict[model] = {
                 "cluster_acc": cluster_acc_scores[i],
@@ -74,11 +77,10 @@ def calculate_all_scores(data):
                 "creativity": "Not Considered",
                 "bias": "Not Considered",
                 "custom": custom[i]
-            }           
+            }
     elif category == "Reasoning and Problem-Solving":
         weight = [0.5, 0, 0.2, 0.2, 0.1, 0]
         custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
-
         for i, model in enumerate(models):
             my_dict[model] = {
                 "cluster_acc": cluster_acc_scores[i],
@@ -88,11 +90,10 @@ def calculate_all_scores(data):
                 "creativity": creativity_scores[i],
                 "bias": "Not Considered",
                 "custom": custom[i]
-            }  
+            }
     elif category == "Creative Writing":
         weight = [0, 0, 0.2, 0.15, 0.6, 0.05]
         custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
-
         for i, model in enumerate(models):
             my_dict[model] = {
                 "cluster_acc": "Not Considered",
@@ -102,11 +103,10 @@ def calculate_all_scores(data):
                 "creativity": creativity_scores[i],
                 "bias": bias_scores[i],
                 "custom": custom[i]
-            }   
-    elif category == "Language Understanding": # actually for Ethics
+            }
+    elif category == "Language Understanding":  # actually for Ethics
         weight = [0, 0, 0.1, 0.1, 0, 0.8]
         custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
-
         for i, model in enumerate(models):
             my_dict[model] = {
                 "cluster_acc": "Not Considered",
@@ -117,7 +117,6 @@ def calculate_all_scores(data):
                 "bias": bias_scores[i],
                 "custom": custom[i]
             }
-
     return my_dict
 
 def calculate_preset_scores(data):
@@ -125,7 +124,12 @@ def calculate_preset_scores(data):
     prompt = data["prompt"]
     filt_resp = full_data[(full_data["Category"] == category) & (full_data["Prompt"] == prompt)][["GPT4", "Gemini", "Claude3.5", "Llama"]].values[0]
     if len(filt_resp) == 4:
-        data["responses"] = {"GPT-4o": filt_resp[0], "Gemini": filt_resp[1], "Claude 3.5 Sonnet": filt_resp[2], "Llama": filt_resp[3]}
+        data["responses"] = {
+            "GPT-4o": filt_resp[0],
+            "Gemini": filt_resp[1],
+            "Claude 3.5 Sonnet": filt_resp[2],
+            "Llama": filt_resp[3]
+        }
         return calculate_all_scores(data)
     else:
         print("ERROR: Not enough responses")
@@ -140,24 +144,18 @@ def calculate_preset_scores(data):
                 "creativity": [0] * 4,
                 "bias": [0] * 4,
                 "custom": [0] * 4
-            }  
+            }
         return my_dict
-
 @app.route("/api/accuracy", methods=["POST"])
 def receive_data():
     data = request.json
     print("DATA HERE", data)
-
-    # determines calculations for presets vs custom
-    if data.get("responses" , 0) == 0: # checks if there are responses in data
+    # Determine calculations for presets vs custom
+    if data.get("responses", 0) == 0:  # Check if there are responses in data
         scores = calculate_preset_scores(data)
     else:
         scores = calculate_all_scores(data)
     print("SCORES HERE", scores)
-    return jsonify({
-        "message": scores
-        })
-
+    return jsonify({"message": scores})
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
-    
