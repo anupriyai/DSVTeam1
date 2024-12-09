@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from dotenv import load_dotenv
 from openai import OpenAI
+
 # Load environment variables from the .env file
 load_dotenv()
 # Ensure the API key is set correctly
@@ -15,6 +16,7 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY is missing in the .env file")
 # Create OpenAI client instance
 client = OpenAI(api_key=api_key)
+
 # Analyze feedback and assign a score based on sentiment polarity
 def analyze_feedback(feedback):
     sentiment_scores = []
@@ -43,20 +45,48 @@ def generate_gpt4_output(writing_prompt, gpt4_model="gpt-4"):
     except Exception as e:
         print(f"Error generating output with GPT-4: {e}")
         return ""
-# Generate GPT-4 creativity score
+
 def generate_gpt4_score(text, score_criteria="creativity"):
-    prompt = f"Rate the following text on a scale of 1 to 6 for {score_criteria} (Provide only a number between 1 and 6):\n\n{text}"
+    # Modify the prompt to ensure GPT-4 outputs a numerical score
+    prompt = f"Rate the following text on a scale of 1 to 6 for {score_criteria} (Please provide only a number between 1 and 6):\n\n{text}"
+    
+    # Get the GPT-4 output
     response = generate_gpt4_output(prompt)
+    
     try:
+        # Extract the numeric value from the response
         score = float(response.strip())
-        if 1 <= score <= 6:
-            return score
-        else:
+        
+        # Check if the score is in the expected range (1 to 6)
+        if score < 1 or score > 6:
             print(f"Score out of range: {score}")
-            return 0
+            return 0  # Default to 0 if the score is out of range
+        
+        return score
+    
     except ValueError:
         # print(f"Invalid response: {response}")
-        return 0
+        return 0  # Default to 0 if the response is not a valid number
+
+# Calculate Weighted Score with Normalization
+def calculate_weighted_score(gpt4_score, feedback_score):
+    weights = {
+        'gpt4': 0.65,
+        'feedback': 0.35
+    }
+
+    # Normalize the scores to be between 0 and 1
+    normalized_gpt4_score = gpt4_score / 6.0 
+    normalized_feedback_score = feedback_score / 6.0
+
+    # Calculate the final weighted score
+    weighted_score = (
+        weights['gpt4'] * normalized_gpt4_score +
+        weights['feedback'] * normalized_feedback_score
+    )
+
+    return weighted_score
+
 # Prepare features and labels for training
 def prepare_data(data_file):
     features = []
@@ -71,9 +101,20 @@ def prepare_data(data_file):
         gpt4_feedback = feedback.get('gpt4_feedback', '')
         human_feedback = feedback.get('human_feedback', '')
         feedback_analysis_score = analyze_feedback([gpt4_feedback, human_feedback])
+
+        # Get GPT-4 score (use GPT-4 to generate score based on creativity)
         gpt4_score = generate_gpt4_score(entry.get("writing_prompt", ""), score_criteria="creativity")
-        feature_vector = [gpt4_score, feedback_analysis_score]
+
+        # Prepare the feature vector (gpt4 score, feedback score, etc.)
+        feature_vector = [
+            gpt4_score,
+            feedback_analysis_score
+        ]
+
+        # Calculate the final score using the weighted calculation (this is your label)
         final_score = calculate_weighted_score(gpt4_score, feedback_analysis_score)
+
+        # Append features and labels
         features.append(feature_vector)
         labels.append(final_score)
     return np.array(features), np.array(labels)
