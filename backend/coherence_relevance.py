@@ -1,7 +1,7 @@
 # Relevance (semantic similarity & word matching), Coherence (perplexity, semantic similarity b/w consecutive sentences)
 
 # RELEVANCE (to the prompt asked): pip install sentence-transformers scikit-learn, pip install rouge-score
-# Cosine similarity: checks for similarity in meaning
+
 # Return a value b/w -1 and 1
     # 1: the sentences are identical in meaning
     # 0: no similarity
@@ -13,6 +13,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from accuracy import *
 
+# Cosine similarity: checks for similarity in meaning
 def st_semantic_similarity_score(reference_text, output_text):
     # reference_text: list of strings to compare output_text to
     # output_text: list of strings 
@@ -42,11 +43,13 @@ def word_match_rouge(reference_text, output_text):
 # recall: __% of the input/actual was found in the output
 
 def total_relevance_score(similarity_score, rouge_score):
-    return 0.3 * np.array(rouge_score) + 0.7 * np.array(similarity_score) # care more about meaning than matching    
+    return 0.3 * np.array(rouge_score) + 0.7 * np.array(similarity_score) 
+    # care more about meaning than matching    
 
 
 # COHERENCE: pip install transformers, pip install -U evaluate
-# perplexity + cosine similarity between consecutive sentences
+
+# perplexity 
 from evaluate import load
 def perplexity_score(text):
     # text: list of strings

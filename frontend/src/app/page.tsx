@@ -106,6 +106,7 @@ const Page = () => {
   };
   // Send the data of personal prompt to the backend
   const sendCustomToBackend = async () => {
+    setLoading(true); 
     const response = await fetch('http://localhost:8080/api/accuracy', {
       method: 'POST',
       headers: {
@@ -128,12 +129,12 @@ const Page = () => {
     const result = await response.json();
     console.log(result);
     setServerResponse(result.message);
-    // setMessage(result.message) // update score to show new score
     setLoading(false);
   };
 
   // Send to backend after generate button clicked
   const sendPresetToBackend = async () => {
+    setLoading(true);
     const response = await fetch('http://localhost:8080/api/accuracy', {
       method: 'POST',
       headers: {
@@ -148,16 +149,24 @@ const Page = () => {
     if (!response.ok) {
       const error = await response.json();
       console.error('Error:', error);
+      setLoading(false);
       return;
     }
     // Backend sends back the custom score
     const result = await response.json();
     console.log(result);
     setServerResponse(result.message);
-    // setMessage(result.message) // update score to show new score
     setLoading(false);
     setShowResponses(true);
   }
+
+  const handleTabChange = (tab: string) => {
+    setSelectedTab(tab);
+    setServerResponse({}); // Clear server response
+    setShowResponses(false); // Reset responses visibility
+    setShowUserResponses(false); // Reset custom responses visibility
+    setLoading(false); // Reset loading state
+  };
   
 
   return (
@@ -168,7 +177,7 @@ const Page = () => {
       {/* Tabs */}
       <div className="flex gap-4 mb-6">
         <button
-          onClick={() => setSelectedTab("database")}
+          onClick={() => handleTabChange("database")}
           className={`p-2 rounded-md ${
             selectedTab === "database" ? "bg-blue-600" : "bg-gray-800"
           }`}
@@ -176,7 +185,7 @@ const Page = () => {
           Choose from Our Database
         </button>
         <button
-          onClick={() => setSelectedTab("custom")}
+          onClick={() => handleTabChange("custom")}
           className={`p-2 rounded-md ${
             selectedTab === "custom" ? "bg-blue-600" : "bg-gray-800"
           }`}
@@ -245,7 +254,10 @@ const Page = () => {
           </button>
 
           {/* LLM Output Comparison */}
-          {showResponses && (
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+          showResponses && (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
               {["GPT-4o", "Gemini", "Claude 3.5 Sonnet", "Llama"].map((model) => (
                 <div
@@ -277,6 +289,7 @@ const Page = () => {
                 </div>
               ))}
             </div>
+          )
           )}
         </>
       )}
@@ -357,39 +370,42 @@ const Page = () => {
           </button>
 
           {/* Display Custom LLM Output Comparison */}
-          {showUserResponses && (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-              {["GPT-4o", "Gemini", "Claude 3.5 Sonnet", "Llama"].map((model) => (
-                <div
-                  key={model}
-                  className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow-md"
-                >
-                  <h2 className="text-lg font-semibold mb-2">{model}</h2>
-                  <p className="text-sm">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            showUserResponses && (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                {["GPT-4o", "Gemini", "Claude 3.5 Sonnet", "Llama"].map((model) => (
+                  <div
+                    key={model}
+                    className="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow-md"
+                  >
+                    <h2 className="text-lg font-semibold mb-2">{model}</h2>
+                    <p className="text-sm">
                     Cluster Accuracy: {serverResponse[model]?.cluster_acc.toString() || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Accuracy: {serverResponse[model]?.accuracy.toString()  || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Coherence: {serverResponse[model]?.coherence.toString() || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Relevance: {serverResponse[model]?.relevance.toString() || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Creativity: {serverResponse[model]?.creativity.toString() || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Bias: {serverResponse[model]?.bias.toString() || "No data available"}
-                  </p>
-                  <p className="text-sm">
-                    Custom: {serverResponse[model]?.custom.toString() || "No data available"}
-                  </p>
-
-                </div>
-              ))}
-            </div>
+                    </p>
+                    <p className="text-sm">
+                      Accuracy: {serverResponse[model]?.accuracy.toString()  || "No data available"}
+                    </p>
+                    <p className="text-sm">
+                      Coherence: {serverResponse[model]?.coherence.toString() || "No data available"}
+                    </p>
+                    <p className="text-sm">
+                      Relevance: {serverResponse[model]?.relevance.toString() || "No data available"}
+                    </p>
+                    <p className="text-sm">
+                      Creativity: {serverResponse[model]?.creativity.toString() || "No data available"}
+                    </p>
+                    <p className="text-sm">
+                      Bias: {serverResponse[model]?.bias.toString() || "No data available"}
+                    </p>
+                    <p className="text-sm">
+                      Custom: {serverResponse[model]?.custom.toString() || "No data available"}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )
           )}
         </>
       )}
