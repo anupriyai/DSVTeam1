@@ -1,13 +1,12 @@
 
 # **DSV
 
-https://github.com/user-attachments/assets/67983239-1040-4078-9e4b-23bca13c0abb
-
 Team1: LLM Evaluation Platform**
 
 This project is designed to evaluate LLM outputs across various categories using a Flask backend and a Next.js frontend.
 
 ---
+https://github.com/user-attachments/assets/67983239-1040-4078-9e4b-23bca13c0abb
 
 ## **Steps to Run the Project**
 
