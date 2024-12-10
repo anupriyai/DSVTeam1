@@ -11,7 +11,7 @@ import numpy as np
 # Using tfidf to turn text into vectors
 # pip install sentence-transformers 
 def cluster_acc_df(df, index):
-    corpus = [df["GPT4"].iloc[index], df["Gemini"].iloc[index], df["Claude3.5"].iloc[index], df["Llama"].iloc[0]] 
+    corpus = [df["GPT4"].iloc[index], df["Gemini"].iloc[index], df["Claude3.5"].iloc[index], "The sky is blue."] 
     # "235 multiplied by 47 equals 11048.", "The sky is blue." , reason_problem_df["Llama"].iloc[0],
     vectorizer = TfidfVectorizer()
     X_tfidf = vectorizer.fit_transform(corpus)
@@ -97,14 +97,18 @@ def cluster_acc(responses):
   
     return cluster_acc_scores
 
-# reason_problem_df = full_data[full_data["Category"] == "Reasoning and Problem-Solving"].dropna()
+#reason_problem_df = full_data[full_data["Category"] == "Reasoning and Problem-Solving"].dropna()
 # print(cluster_acc([reason_problem_df["GPT4"].iloc[0], reason_problem_df["Gemini"].iloc[0], reason_problem_df["Claude3.5"].iloc[0], "blue sky"]))
 # for i, cluster in enumerate(labels_tfidf):
 #     print(f"TF-IDF: Response {i+1} from Cluster {cluster}")
 
 
-# acc_score_outlier, acc_score, X_tfidf, labels_tfidf = cluster_acc(reason_problem_df, 0)
-# print(acc_score_outlier, acc_score)
+# acc_score_outlier, acc_score, X_tfidf, labels_tfidf = cluster_acc_df(reason_problem_df, 0)
+# # print(acc_score_outlier, acc_score)
+# practice = reason_problem_df[["Prompt", "GPT4", "Gemini", "Claude3.5"]].iloc[[0]]
+# practice["Outlier"] = "The sky is blue."
+
+# print(practice)
 
 
 def plot_cluster(X_tfidf, labels_tfidf):
@@ -122,7 +126,7 @@ def plot_cluster(X_tfidf, labels_tfidf):
     plt.title("Clustering of LLM Responses (TFIDF)")
     plt.show()
 
-#plot_cluster(X_tfidf, labels_tfidf)
+# plot_cluster(X_tfidf, labels_tfidf)
 # # Reduce dimensions for plotting
 # pca = PCA(n_components=2)
 # Xtfidf_reduced = pca.fit_transform(X_tfidf.toarray())

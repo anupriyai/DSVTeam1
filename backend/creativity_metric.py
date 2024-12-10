@@ -30,6 +30,7 @@ def analyze_feedback(feedback):
             score = 3
         sentiment_scores.append(score)
     return sum(sentiment_scores) / len(sentiment_scores) if sentiment_scores else 0
+
 # Generate GPT-4 Response Based on Writing Prompt
 def generate_gpt4_output(writing_prompt, gpt4_model="gpt-4"):
     try:
@@ -136,6 +137,8 @@ def train_model(features, labels):
     mse = mean_squared_error(y_test, y_pred)
     print(f"Mean Squared Error on Test Set: {mse}")
     return model
+
+
 # Generate creativity scores for new responses
 def generate_creativity_scores(responses, model):
     new_features = []
