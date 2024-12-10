@@ -1,7 +1,4 @@
-
-# **DSV
-
-Team1: LLM Evaluation Platform**
+# **DSV Team1: LLM Evaluation Platform**
 
 This project is designed to evaluate LLM outputs across various categories using a Flask backend and a Next.js frontend.
 
