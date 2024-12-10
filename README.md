@@ -1,4 +1,9 @@
-# **DSVTeam1: LLM Evaluation Platform**
+
+# **DSV
+
+https://github.com/user-attachments/assets/67983239-1040-4078-9e4b-23bca13c0abb
+
+Team1: LLM Evaluation Platform**
 
 This project is designed to evaluate LLM outputs across various categories using a Flask backend and a Next.js frontend.
 
@@ -54,7 +59,11 @@ The Next.js frontend is located in the `frontend` folder.
 
 ## **Additional Steps**
 
-### **3. First-Time Setup for `accuracy.py`**
+### **3. Download Our Excel File w/ Prompts & Responses**
+1. Go to (https://docs.google.com/spreadsheets/d/1P9wv6TKKD_AK9E9MiLZqJ-OR3KfeDzUA/edit?usp=sharing&ouid=104548229055294474288&rtpof=true&sd=true).
+2. Download the spreadsheet as an .XLSX to the _backend folder of DSVTeam1_
+
+### **4. First-Time Setup for `accuracy.py`**
 1. Open the `accuracy.py` file in the `backend` folder.
 2. Uncomment the `nltk.download()` line to download the tokenizer model:
    ```python
@@ -72,7 +81,7 @@ The Next.js frontend is located in the `frontend` folder.
 
 ---
 
-### **4. Download Wikipedia Dump for Accuracy Metric**
+### **5. Download Wikipedia Dump for Accuracy Metric**
 1. Download the Wikipedia dump files in XML format from [https://dumps.wikimedia.org/](https://dumps.wikimedia.org/).
 2. Save the dump file in your local machine and note its path.
 3. Open `accuracy.py` in the `backend` folder.
