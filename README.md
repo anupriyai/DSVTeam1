@@ -57,7 +57,7 @@ The Next.js frontend is located in the `frontend` folder.
 
 ### **3. Download Our Excel File w/ Prompts & Responses**
 1. Go to (https://docs.google.com/spreadsheets/d/1P9wv6TKKD_AK9E9MiLZqJ-OR3KfeDzUA/edit?usp=sharing&ouid=104548229055294474288&rtpof=true&sd=true).
-2. Download the spreadsheet as an .XLSX to the _backend folder of DSVTeam1_
+2. Download the spreadsheet as an .XLSX to the `backend` folder of `DSVTeam1`
 
 ### **4. First-Time Setup for `accuracy.py`**
 1. Open the `accuracy.py` file in the `backend` folder.
