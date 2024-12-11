@@ -1,9 +1,15 @@
-# **DSV Team1: LLM Evaluation Platform**
+# **DSV Team #1: LLM Evaluation Platform**
 
 This project is designed to evaluate LLM outputs across various categories using a Flask backend and a Next.js frontend.
 
 ---
 https://github.com/user-attachments/assets/67983239-1040-4078-9e4b-23bca13c0abb
+
+## **Team Members**
+Anupriya Islam  
+Anh Tran  
+Brian R Wang  
+Annie Gao
 
 ## **Steps to Run the Project**
 
@@ -11,19 +17,24 @@ https://github.com/user-attachments/assets/67983239-1040-4078-9e4b-23bca13c0abb
 The Flask backend is located in the `backend` folder and runs via `server.py`.
 
 #### Steps:
-1. Navigate to the `backend` folder:
+1. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+2. Navigate to the `backend` folder:
    ```bash
    cd backend
    ```
-2. Install the required Python dependencies:
+3. Install the required Python dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the Flask server:
+4. Run the Flask server:
    ```bash
    python server.py
    ```
-4. The backend should now be running on:
+5. The backend should now be running on:
    ```
    http://127.0.0.1:8080
    ```
