@@ -104,8 +104,8 @@ def calculate_all_scores(data):
                 "bias": bias_scores[i],
                 "custom": custom[i]
             }
-    elif category == "Language Understanding":  # actually for Ethics
-        weight = [0, 0, 0.1, 0.1, 0, 0.8]
+    elif category == "Ethics & Bias":  
+        weight = [0, 0, 0.1, 0.1, 0.1, 0.7]
         custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
         for i, model in enumerate(models):
             my_dict[model] = {
@@ -113,10 +113,24 @@ def calculate_all_scores(data):
                 "accuracy": "Not Considered",
                 "coherence": coherence_scores[i],
                 "relevance": relevance_scores[i],
-                "creativity": "Not Considered",
+                "creativity": creativity_scores[i],
                 "bias": bias_scores[i],
                 "custom": custom[i]
             }
+    elif category == "Language Understanding":  
+        weight = [0.5, 0, 0.3, 0.2, 0, 0]
+        custom = custom_score(cluster_acc_scores, acc_scores, coherence_scores, relevance_scores, creativity_scores, bias_scores, weight)
+        for i, model in enumerate(models):
+            my_dict[model] = {
+                "cluster_acc": cluster_acc_scores[i],
+                "accuracy": "Not Considered",
+                "coherence": coherence_scores[i],
+                "relevance": relevance_scores[i],
+                "creativity": "Not Considered",
+                "bias": "Not Considered",
+                "custom": custom[i]
+            }
+    
     return my_dict
 
 def calculate_preset_scores(data):
